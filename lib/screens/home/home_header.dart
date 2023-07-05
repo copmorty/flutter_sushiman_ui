@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sushiman_ui/shared/colors.dart';
 import 'package:flutter_sushiman_ui/shared/helpers/custom_font_icons.dart';
+import 'package:flutter_sushiman_ui/shared/sizes.dart';
 import 'package:flutter_sushiman_ui/shared/widgets/go_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,12 +10,15 @@ class HomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        _Banner(),
-        SizedBox(height: 20),
-        _SearchBar(),
-      ],
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: screenHorizontalPadding),
+      child: Column(
+        children: [
+          _Banner(),
+          SizedBox(height: 20),
+          _SearchBar(),
+        ],
+      ),
     );
   }
 }

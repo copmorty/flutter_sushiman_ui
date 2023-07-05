@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sushiman_ui/shared/data/data_source.dart';
+import 'package:flutter_sushiman_ui/shared/sizes.dart';
 import 'package:flutter_sushiman_ui/shared/widgets/dish_square_card.dart';
 import 'package:flutter_sushiman_ui/shared/widgets/food_chip.dart';
 
@@ -35,6 +36,7 @@ class _HomeBodyState extends State<HomeBody> {
             ),
             separatorBuilder: (context, index) => const SizedBox(width: 10),
             itemCount: dishTypesData.length,
+            padding: const EdgeInsets.symmetric(horizontal: screenHorizontalPadding),
           ),
         ),
         SizedBox(
@@ -44,6 +46,7 @@ class _HomeBodyState extends State<HomeBody> {
             itemBuilder: (context, index) => DishSquareCard(dishTypesData[currentDishTypeIndex].dishes[index]),
             separatorBuilder: (context, index) => const SizedBox(width: 10),
             itemCount: dishTypesData[currentDishTypeIndex].dishes.length,
+            padding: const EdgeInsets.symmetric(horizontal: screenHorizontalPadding),
           ),
         )
       ],
