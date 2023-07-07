@@ -13,7 +13,7 @@ class ScreenSubtitle extends StatelessWidget {
       text,
       style: TextStyle(
         fontFamily: GoogleFonts.roboto().fontFamily,
-        color: blackColor060,
+        color: blackColorOp060,
         fontSize: 18,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.8,

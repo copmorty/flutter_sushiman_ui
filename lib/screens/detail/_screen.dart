@@ -6,6 +6,7 @@ import 'package:flutter_sushiman_ui/screens/detail/detail_footer_cart.dart';
 import 'package:flutter_sushiman_ui/screens/detail/detail_header.dart';
 import 'package:flutter_sushiman_ui/shared/data/models/dish.dart';
 import 'package:flutter_sushiman_ui/shared/helpers/system_ui_overlay_style.dart';
+import 'package:flutter_sushiman_ui/shared/sizes.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key}) : super(key: key);
@@ -22,12 +23,12 @@ class DetailScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView(
+                  padding: const EdgeInsets.only(bottom: screenBottomPadding),
                   children: [
                     DetailHeader(dish),
                     const SizedBox(height: 20),
                     DetailBodyIngredients(dish),
                     DetailBodyDescription(dish),
-                    const SizedBox(height: 40),
                   ],
                 ),
               ),

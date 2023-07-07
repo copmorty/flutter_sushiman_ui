@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sushiman_ui/shared/data/data_source.dart';
 import 'package:flutter_sushiman_ui/shared/sizes.dart';
 import 'package:flutter_sushiman_ui/shared/widgets/dish_square_card.dart';
-import 'package:flutter_sushiman_ui/shared/widgets/food_chip.dart';
+import 'package:flutter_sushiman_ui/screens/home/widgets/dish_type_chip.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class _HomeBodyState extends State<HomeBody> {
           height: 75,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => FoodChip(
+            itemBuilder: (context, index) => DishTypeChip(
               picture: dishTypesData[index].picture,
               label: dishTypesData[index].name,
               selected: index == currentDishTypeIndex,

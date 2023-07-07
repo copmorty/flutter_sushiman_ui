@@ -9,7 +9,7 @@ class HomeBottomList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: const EdgeInsets.only(left: screenHorizontalPadding, right: screenHorizontalPadding, bottom: 40),
+      padding: const EdgeInsets.only(left: screenHorizontalPadding, right: screenHorizontalPadding, bottom: screenBottomPadding),
       sliver: SliverList.separated(
         itemBuilder: (context, index) => DishRectangularCard(popularDishesData[index]),
         separatorBuilder: (context, index) => const SizedBox(height: 10),

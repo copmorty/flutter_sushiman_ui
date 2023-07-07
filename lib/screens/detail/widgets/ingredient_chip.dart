@@ -25,7 +25,7 @@ class IngredientChip extends StatelessWidget {
             style: TextStyle(
               fontFamily: GoogleFonts.roboto().fontFamily,
               fontSize: 17,
-              color: blackColor087,
+              color: blackColorOp087,
               fontWeight: FontWeight.w400,
             ),
           ),

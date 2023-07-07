@@ -25,7 +25,7 @@ class DetailHeader extends StatelessWidget {
               angle: 75 * math.pi / 180,
               child: const TextVertical(
                 'メカジキ',
-                style: TextStyle(color: blackColor004, fontWeight: FontWeight.w800, fontSize: 110, height: 1.1),
+                style: TextStyle(color: blackColorOp004, fontWeight: FontWeight.w800, fontSize: 110, height: 1.1),
               ),
             ),
           ),
@@ -34,7 +34,7 @@ class DetailHeader extends StatelessWidget {
             top: 80,
             child: TextVertical(
               '鮨オリ',
-              style: TextStyle(color: blackColor087, fontWeight: FontWeight.w800, fontSize: 70, height: 1.1),
+              style: TextStyle(color: blackColorOp087, fontWeight: FontWeight.w800, fontSize: 70, height: 1.1),
             ),
           ),
           Positioned(

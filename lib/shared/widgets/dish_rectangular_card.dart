@@ -29,14 +29,14 @@ class DishRectangularCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(dish.name, style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, color: blackColor075)),
+                  Text(dish.name, style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, color: blackColorOp075)),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         '\$' + dish.price.toStringAsFixed(2),
-                        style: TextStyle(fontFamily: GoogleFonts.roboto().fontFamily, color: blackColor087, fontSize: 17, fontWeight: FontWeight.w600),
+                        style: TextStyle(fontFamily: GoogleFonts.roboto().fontFamily, color: blackColorOp087, fontSize: 17, fontWeight: FontWeight.w600),
                       ),
                       Row(
                         children: [

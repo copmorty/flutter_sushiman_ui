@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sushiman_ui/shared/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FoodChip extends StatelessWidget {
+class DishTypeChip extends StatelessWidget {
   final String picture;
   final String label;
   final bool selected;
   final Function select;
 
-  const FoodChip({
+  const DishTypeChip({
     Key? key,
     required this.picture,
     required this.label,

@@ -26,7 +26,7 @@ class DetailBodyDescription extends StatelessWidget {
             dish.description,
             style: TextStyle(
               fontFamily: GoogleFonts.roboto().fontFamily,
-              color: blackColor045,
+              color: blackColorOp045,
               height: 1.8,
               fontSize: 17,
             ),
