@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sushiman_ui/screens/detail/_screen.dart';
 import 'package:flutter_sushiman_ui/screens/home/_screen.dart';
 import 'package:flutter_sushiman_ui/screens/onboarding/_screen.dart';
 import 'package:flutter_sushiman_ui/shared/themes/default_theme.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const OnboardingScreen(),
         '/home': (context) => const HomeScreen(),
+        '/detail': (context) => const DetailScreen(),
       },
     );
   }

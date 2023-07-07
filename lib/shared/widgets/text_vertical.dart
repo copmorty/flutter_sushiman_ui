@@ -11,6 +11,7 @@ class TextVertical extends StatelessWidget {
     final textList = text.split('');
 
     return SingleChildScrollView(
+      clipBehavior: Clip.none,
       physics: const NeverScrollableScrollPhysics(),
       child: Column(
         children: [
