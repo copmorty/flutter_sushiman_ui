@@ -15,7 +15,7 @@ const _omeletteIngredient = Ingredient('Omelette', 'assets/images/illustrations/
 
 final _sushiDishType = DishType(
   'Sushi',
-  'assets/images/illustrations/ebi.png',
+  'assets/images/illustrations/ebi_100.png',
   [
     Dish('Original Sushi', 'assets/images/illustrations/original_sushi.png', Decimal.fromInt(21), Decimal.parse('4.8'), _descriptionText, [_riceIngredient, _tunaIngredient, _soySauceIngredient]),
     Dish('Shrimp Sushi', 'assets/images/illustrations/shrimp_sushi.png', Decimal.fromInt(23), Decimal.parse('4.8'), _descriptionText, [_riceIngredient, _shrimpIngredient, _soySauceIngredient]),
@@ -26,7 +26,7 @@ final _sushiDishType = DishType(
 
 final _ramenDishType = DishType(
   'Ramen',
-  'assets/images/illustrations/noodles.png',
+  'assets/images/illustrations/noodles_100.png',
   [
     Dish('Noodles', 'assets/images/illustrations/noodles.png', Decimal.fromInt(15), Decimal.parse('4.0'), _descriptionText, []),
     Dish('Miso', 'assets/images/illustrations/miso.png', Decimal.fromInt(18), Decimal.parse('4.3'), _descriptionText, []),
@@ -36,7 +36,7 @@ final _ramenDishType = DishType(
 
 final _makiDishType = DishType(
   'Maki',
-  'assets/images/illustrations/tekkamaki.png',
+  'assets/images/illustrations/tekkamaki_100.png',
   [
     Dish('Tekkamaki', 'assets/images/illustrations/tekkamaki.png', Decimal.fromInt(30), Decimal.parse('4.9'), _descriptionText, []),
     Dish('Salmon Eggs', 'assets/images/illustrations/salmon_eggs.png', Decimal.fromInt(21), Decimal.parse('5'), _descriptionText, []),

@@ -39,7 +39,10 @@ class _Banner extends StatelessWidget {
               Positioned(
                 top: -40,
                 right: -50,
-                child: Image.asset('assets/images/illustrations/shrimps.png'),
+                child: Image.asset(
+                  'assets/images/illustrations/shrimps.png',
+                  width: 200,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
