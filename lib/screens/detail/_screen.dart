@@ -9,7 +9,12 @@ import 'package:flutter_sushiman_ui/shared/helpers/system_ui_overlay_style.dart'
 import 'package:flutter_sushiman_ui/shared/sizes.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({Key? key}) : super(key: key);
+  final Animation<double> transitionAnimation;
+
+  const DetailScreen({
+    Key? key,
+    required this.transitionAnimation,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +26,16 @@ class DetailScreen extends StatelessWidget {
       value: darkSystemUiOverlayStyle,
       child: Scaffold(
         body: SafeArea(
-          child: Column(
+          child: Stack(
             children: [
-              Expanded(
+              AnimatedBuilder(
+                animation: transitionAnimation,
+                builder: (context, child) {
+                  return FadeTransition(
+                    opacity: CurvedAnimation(parent: transitionAnimation, curve: Curves.easeOutQuart),
+                    child: child,
+                  );
+                },
                 child: ListView(
                   padding: const EdgeInsets.only(bottom: screenBottomPadding),
                   children: [
@@ -34,7 +46,24 @@ class DetailScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              DetailFooterCart(dish),
+              AnimatedBuilder(
+                animation: transitionAnimation,
+                builder: (context, child) {
+                  return SlideTransition(
+                    position: Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero).animate(
+                      CurvedAnimation(
+                        parent: transitionAnimation,
+                        curve: Curves.bounceIn,
+                      ),
+                    ),
+                    child: child,
+                  );
+                },
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: DetailFooterCart(dish),
+                ),
+              ),
             ],
           ),
         ),

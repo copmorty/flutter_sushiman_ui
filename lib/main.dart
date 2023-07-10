@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sushiman_ui/screens/detail/_screen.dart';
 import 'package:flutter_sushiman_ui/screens/home/_screen.dart';
 import 'package:flutter_sushiman_ui/screens/onboarding/_screen.dart';
+import 'package:flutter_sushiman_ui/shared/animations/route_transitions/custom_detail_route.dart';
+import 'package:flutter_sushiman_ui/shared/animations/route_transitions/scale_route.dart';
+import 'package:flutter_sushiman_ui/shared/animations/route_transitions/slide_left_route.dart';
 import 'package:flutter_sushiman_ui/shared/themes/default_theme.dart';
 
 void main() {
@@ -17,10 +19,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sushiman App',
       theme: defaultTheme,
-      routes: {
-        '/': (context) => const OnboardingScreen(),
-        '/home': (context) => const HomeScreen(),
-        '/detail': (context) => const DetailScreen(),
+      onGenerateRoute: (settings) {
+        if (settings.name == '/') return ScaleRoute(const OnboardingScreen(), settings);
+        if (settings.name == '/home') return SlideLeftRoute(const HomeScreen(), settings);
+        if (settings.name == '/detail') return CustomDetailRoute(settings);
+
+        return ScaleRoute(const OnboardingScreen(), settings);
       },
     );
   }
