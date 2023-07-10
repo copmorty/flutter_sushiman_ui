@@ -12,7 +12,7 @@ class DishSquareCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed('/detail', arguments: dish),
+      onTap: () => Navigator.of(context).pushNamed('/detail', arguments: {'dish': dish, 'sourceWidgetKey': key}),
       child: Card(
         elevation: 0.2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
@@ -26,7 +26,12 @@ class DishSquareCard extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Expanded(child: Image.asset(dish.picture)),
+                        Expanded(
+                          child: Hero(
+                            tag: 'dishPicture-${dish.name}-$key',
+                            child: Image.asset(dish.picture),
+                          ),
+                        ),
                         const SizedBox(width: 30),
                       ],
                     ),

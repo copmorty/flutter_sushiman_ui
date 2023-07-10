@@ -12,7 +12,7 @@ class DishRectangularCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed('/detail', arguments: dish),
+      onTap: () => Navigator.of(context).pushNamed('/detail', arguments: {'dish': dish, 'sourceWidgetKey': key}),
       child: Card(
         elevation: 0.2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
@@ -22,8 +22,9 @@ class DishRectangularCard extends StatelessWidget {
             children: [
               Expanded(
                 flex: 3,
-                child: Column(
-                  children: [Image.asset(dish.picture, width: 80,)],
+                child: Hero(
+                  tag: 'dishPicture-${dish.name}-$key',
+                  child: Image.asset(dish.picture, height: 80),
                 ),
               ),
               Expanded(
@@ -56,7 +57,8 @@ class DishRectangularCard extends StatelessWidget {
               ),
               Expanded(
                 flex: 2,
-                child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
                       onPressed: () {},

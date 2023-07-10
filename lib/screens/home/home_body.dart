@@ -43,7 +43,7 @@ class _HomeBodyState extends State<HomeBody> {
           height: 225,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => DishSquareCard(dishTypesData[currentDishTypeIndex].dishes[index]),
+            itemBuilder: (context, index) => DishSquareCard(dishTypesData[currentDishTypeIndex].dishes[index], key: UniqueKey()),
             separatorBuilder: (context, index) => const SizedBox(width: 10),
             itemCount: dishTypesData[currentDishTypeIndex].dishes.length,
             padding: const EdgeInsets.symmetric(horizontal: screenHorizontalPadding),

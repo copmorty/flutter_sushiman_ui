@@ -13,7 +13,9 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dish = ModalRoute.of(context)!.settings.arguments as Dish;
+    final map = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final Dish dish = map['dish'];
+    final Key sourceWidgetKey = map['sourceWidgetKey'];
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: darkSystemUiOverlayStyle,
@@ -25,7 +27,7 @@ class DetailScreen extends StatelessWidget {
                 child: ListView(
                   padding: const EdgeInsets.only(bottom: screenBottomPadding),
                   children: [
-                    DetailHeader(dish),
+                    DetailHeader(dish: dish, sourceWidgetKey: sourceWidgetKey),
                     const SizedBox(height: 20),
                     DetailBodyIngredients(dish),
                     DetailBodyDescription(dish),

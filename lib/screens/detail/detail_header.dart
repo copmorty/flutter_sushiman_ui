@@ -9,8 +9,13 @@ import 'dart:math' as math;
 
 class DetailHeader extends StatelessWidget {
   final Dish dish;
+  final Key sourceWidgetKey;
 
-  const DetailHeader(this.dish, {Key? key}) : super(key: key);
+  const DetailHeader({
+    Key? key,
+    required this.dish,
+    required this.sourceWidgetKey,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +45,7 @@ class DetailHeader extends StatelessWidget {
           Positioned(
             left: 0,
             top: 10,
-            child: Image.asset(dish.picture, fit: BoxFit.contain, height: 260, width: 260),
+            child: Hero(tag: 'dishPicture-${dish.name}-$sourceWidgetKey', child: Image.asset(dish.picture, fit: BoxFit.contain, height: 260, width: 260)),
           ),
           Positioned(
             bottom: 10,

@@ -45,12 +45,16 @@ class _CartRow extends StatefulWidget {
 
 class _CartRowState extends State<_CartRow> {
   int dishQuantity = 1;
+  int previousDishQuantity = 1;
+  final tweenBottom = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero);
+  final tweenTop = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero);
 
   void _updateCounter(int value) {
     final newDishQuantity = dishQuantity + value;
-    if (newDishQuantity == 0) return;
+    if (newDishQuantity == 0 || newDishQuantity > 100) return;
 
     setState(() {
+      previousDishQuantity = dishQuantity;
       dishQuantity = newDishQuantity;
     });
   }
@@ -62,12 +66,16 @@ class _CartRowState extends State<_CartRow> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          '\$${cartAmount.toStringAsFixed(2)}',
-          style: TextStyle(
-            fontFamily: GoogleFonts.roboto().fontFamily,
-            fontSize: 20,
-            color: whiteColor,
+        AnimatedSwitcher(
+          duration: const Duration(milliseconds: 250),
+          child: Text(
+            '\$${cartAmount.toStringAsFixed(2)}',
+            key: ValueKey(cartAmount),
+            style: TextStyle(
+              fontFamily: GoogleFonts.roboto().fontFamily,
+              fontSize: 20,
+              color: whiteColor,
+            ),
           ),
         ),
         Row(
@@ -76,9 +84,28 @@ class _CartRowState extends State<_CartRow> {
             SizedBox(
               width: 50,
               child: Center(
-                child: Text(
-                  dishQuantity.toString(),
-                  style: TextStyle(fontFamily: GoogleFonts.roboto().fontFamily, color: whiteColor, fontSize: 20),
+                child: ClipRect(
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 250),
+                    transitionBuilder: (Widget child, Animation<double> animation) {
+                      if (child.key == ValueKey(dishQuantity)) {
+                        return SlideTransition(
+                          position: dishQuantity > previousDishQuantity ? tweenBottom.animate(animation) : tweenTop.animate(animation),
+                          child: child,
+                        );
+                      } else {
+                        return SlideTransition(
+                          position: dishQuantity > previousDishQuantity ? tweenTop.animate(animation) : tweenBottom.animate(animation),
+                          child: child,
+                        );
+                      }
+                    },
+                    child: Text(
+                      dishQuantity.toString(),
+                      key: ValueKey(dishQuantity),
+                      style: TextStyle(fontFamily: GoogleFonts.roboto().fontFamily, color: whiteColor, fontSize: 20),
+                    ),
+                  ),
                 ),
               ),
             ),
