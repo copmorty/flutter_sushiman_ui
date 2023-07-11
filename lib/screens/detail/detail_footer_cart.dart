@@ -8,12 +8,18 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DetailFooterCart extends StatelessWidget {
   final Dish dish;
-  const DetailFooterCart(this.dish, {Key? key}) : super(key: key);
+  final double boxHeight;
+
+  const DetailFooterCart({
+    Key? key,
+    required this.dish,
+    required this.boxHeight,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
+      height: boxHeight,
       padding: const EdgeInsets.symmetric(horizontal: screenHorizontalPadding),
       color: reddishColor,
       child: Column(
@@ -66,17 +72,29 @@ class _CartRowState extends State<_CartRow> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        AnimatedSwitcher(
-          duration: const Duration(milliseconds: 250),
-          child: Text(
-            '\$${cartAmount.toStringAsFixed(2)}',
-            key: ValueKey(cartAmount),
-            style: TextStyle(
-              fontFamily: GoogleFonts.roboto().fontFamily,
-              fontSize: 20,
-              color: whiteColor,
+        Row(
+          children: [
+            Text(
+                '\$',
+                style: TextStyle(
+                  fontFamily: GoogleFonts.roboto().fontFamily,
+                  fontSize: 20,
+                  color: whiteColor,
+                ),
+              ),
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 250),
+              child: Text(
+                cartAmount.toStringAsFixed(2),
+                key: ValueKey(cartAmount),
+                style: TextStyle(
+                  fontFamily: GoogleFonts.roboto().fontFamily,
+                  fontSize: 20,
+                  color: whiteColor,
+                ),
+              ),
             ),
-          ),
+          ],
         ),
         Row(
           children: [

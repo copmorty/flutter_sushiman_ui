@@ -13,7 +13,7 @@ class CustomDetailRoute extends PageRouteBuilder {
             Animation<double> animation,
             Animation<double> secondaryAnimation,
           ) {
-            return DetailScreen(transitionAnimation: animation);
+            return DetailScreen(animation);
           },
         );
 }

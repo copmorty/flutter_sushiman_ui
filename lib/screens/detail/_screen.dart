@@ -9,11 +9,12 @@ import 'package:flutter_sushiman_ui/shared/helpers/system_ui_overlay_style.dart'
 import 'package:flutter_sushiman_ui/shared/sizes.dart';
 
 class DetailScreen extends StatelessWidget {
+  static const double _footerCartHeight = 150;
   final Animation<double> transitionAnimation;
 
-  const DetailScreen({
+  const DetailScreen(
+    this.transitionAnimation, {
     Key? key,
-    required this.transitionAnimation,
   }) : super(key: key);
 
   @override
@@ -37,7 +38,7 @@ class DetailScreen extends StatelessWidget {
                   );
                 },
                 child: ListView(
-                  padding: const EdgeInsets.only(bottom: screenBottomPadding),
+                  padding: const EdgeInsets.only(bottom: _footerCartHeight + screenBottomPadding),
                   children: [
                     DetailHeader(dish: dish, sourceWidgetKey: sourceWidgetKey),
                     const SizedBox(height: 20),
@@ -61,7 +62,7 @@ class DetailScreen extends StatelessWidget {
                 },
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: DetailFooterCart(dish),
+                  child: DetailFooterCart(dish: dish, boxHeight: _footerCartHeight),
                 ),
               ),
             ],
