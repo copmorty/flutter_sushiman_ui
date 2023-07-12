@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sushiman_ui/shared/colors.dart';
-import 'package:flutter_sushiman_ui/shared/helpers/system_ui_overlay_style.dart';
+import 'package:flutter_sushiman_ui/shared/helpers/custom_system_ui_overlay_style.dart';
 import 'package:flutter_sushiman_ui/shared/sizes.dart';
 import 'package:flutter_sushiman_ui/shared/widgets/go_button.dart';
 import 'package:flutter_sushiman_ui/shared/widgets/text_vertical.dart';
@@ -13,11 +13,14 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: lightSystemUiOverlayStyle,
+      value: CustomSystemUiOverlayStyle.light,
       child: Scaffold(
         backgroundColor: reddishColor,
         body: SafeArea(
+          bottom: false,
           child: Padding(
               padding: const EdgeInsets.only(bottom: screenBottomPadding),
               child: Stack(
@@ -27,18 +30,18 @@ class OnboardingScreen extends StatelessWidget {
                     child: Transform.rotate(
                       origin: const Offset(-180, -50),
                       angle: -45 * math.pi / 180,
-                      child: const TextVertical(
+                      child: TextVertical(
                         '日本食',
-                        style: TextStyle(color: whiteColorOp045, fontWeight: FontWeight.w800, fontSize: 250, height: 1.1),
+                        style: TextStyle(color: whiteColorOp045, fontWeight: FontWeight.w800, fontSize: screenHeight * 0.32, height: 1.1),
                       ),
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     right: screenHorizontalPadding,
-                    top: 115,
+                    top: screenHeight * 0.16,
                     child: TextVertical(
                       '日本食',
-                      style: TextStyle(color: whiteColor, fontWeight: FontWeight.w800, fontSize: 80, height: 1.1),
+                      style: TextStyle(color: whiteColor, fontWeight: FontWeight.w800, fontSize: screenHeight * 0.10, height: 1.1),
                     ),
                   ),
                   Column(
@@ -51,14 +54,15 @@ class OnboardingScreen extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(horizontal: screenHorizontalPadding),
                               child: Text(
                                 'SUSHIMAN',
-                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: whiteColor, fontWeight: FontWeight.w500),
+                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: whiteColor, fontWeight: FontWeight.w600),
                               ),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Image.asset('assets/images/onboarding_image.png'),
-                              ],
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 15),
+                                child: Image.asset('assets/images/onboarding_image.png'),
+                              ),
                             ),
                           ],
                         ),
@@ -72,7 +76,7 @@ class OnboardingScreen extends StatelessWidget {
                               'THE TASTE OF JAPANESE FOOD',
                               style: Theme.of(context).textTheme.headlineLarge!.copyWith(color: whiteColor, fontWeight: FontWeight.w600),
                             ),
-                            const SizedBox(height: 15),
+                            const SizedBox(height: 20),
                             Text(
                               'Feel the taste of most populars Japanese foods from anywhere and anytime.',
                               style: GoogleFonts.roboto(

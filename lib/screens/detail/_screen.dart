@@ -5,11 +5,10 @@ import 'package:flutter_sushiman_ui/screens/detail/detail_body_ingredients.dart'
 import 'package:flutter_sushiman_ui/screens/detail/detail_footer_cart.dart';
 import 'package:flutter_sushiman_ui/screens/detail/detail_header.dart';
 import 'package:flutter_sushiman_ui/shared/data/models/dish.dart';
-import 'package:flutter_sushiman_ui/shared/helpers/system_ui_overlay_style.dart';
+import 'package:flutter_sushiman_ui/shared/helpers/custom_system_ui_overlay_style.dart';
 import 'package:flutter_sushiman_ui/shared/sizes.dart';
 
 class DetailScreen extends StatelessWidget {
-  static const double _footerCartHeight = 150;
   final Animation<double> transitionAnimation;
 
   const DetailScreen(
@@ -19,14 +18,19 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _safeAreaBottomPadding = MediaQuery.of(context).padding.bottom;
+    final _footerCartHeight = 150 + _safeAreaBottomPadding;
+    final _bottomPadding = _footerCartHeight + screenBottomPadding;
+
     final map = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final Dish dish = map['dish'];
     final Key sourceWidgetKey = map['sourceWidgetKey'];
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: darkSystemUiOverlayStyle,
+      value: CustomSystemUiOverlayStyle.dark,
       child: Scaffold(
         body: SafeArea(
+          bottom: false,
           child: Stack(
             children: [
               AnimatedBuilder(
@@ -38,7 +42,7 @@ class DetailScreen extends StatelessWidget {
                   );
                 },
                 child: ListView(
-                  padding: const EdgeInsets.only(bottom: _footerCartHeight + screenBottomPadding),
+                  padding: EdgeInsets.only(bottom: _bottomPadding),
                   children: [
                     DetailHeader(dish: dish, sourceWidgetKey: sourceWidgetKey),
                     const SizedBox(height: 20),
