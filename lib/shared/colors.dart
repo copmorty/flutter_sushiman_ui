@@ -17,6 +17,7 @@ const blackColor = Color(0xFF000000);
 const blackColorOp087 = Color(0xDD000000);
 const blackColorOp075 = Color(0xBF000000);
 const blackColorOp060 = Color(0x99000000);
+const blackColorOp050 = Color(0x0D000000);
 const blackColorOp045 = Color(0x73000000);
 const blackColorOp038 = Color(0x61000000);
 const blackColorOp004 = Color(0x0A000000);

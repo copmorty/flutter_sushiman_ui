@@ -15,7 +15,7 @@ class IngredientChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
-      backgroundColor: Colors.black.withOpacity(0.05),
+      backgroundColor: blackColorOp050,
       label: Row(
         children: [
           Image.asset(picture, height: 23),

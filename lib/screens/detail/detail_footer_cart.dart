@@ -50,24 +50,24 @@ class _CartRow extends StatefulWidget {
 }
 
 class _CartRowState extends State<_CartRow> {
-  int dishQuantity = 1;
-  int previousDishQuantity = 1;
-  final tweenBottom = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero);
-  final tweenTop = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero);
+  int _dishQuantity = 1;
+  int _previousDishQuantity = 1;
+  final _tweenBottom = Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero);
+  final _tweenTop = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero);
 
   void _updateCounter(int value) {
-    final newDishQuantity = dishQuantity + value;
+    final newDishQuantity = _dishQuantity + value;
     if (newDishQuantity == 0 || newDishQuantity > 100) return;
 
     setState(() {
-      previousDishQuantity = dishQuantity;
-      dishQuantity = newDishQuantity;
+      _previousDishQuantity = _dishQuantity;
+      _dishQuantity = newDishQuantity;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    Decimal cartAmount = widget.dish.price * Decimal.fromInt(dishQuantity);
+    Decimal cartAmount = widget.dish.price * Decimal.fromInt(_dishQuantity);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,13 +75,13 @@ class _CartRowState extends State<_CartRow> {
         Row(
           children: [
             Text(
-                '\$',
-                style: TextStyle(
-                  fontFamily: GoogleFonts.roboto().fontFamily,
-                  fontSize: 20,
-                  color: whiteColor,
-                ),
+              '\$',
+              style: TextStyle(
+                fontFamily: GoogleFonts.roboto().fontFamily,
+                fontSize: 20,
+                color: whiteColor,
               ),
+            ),
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 250),
               child: Text(
@@ -106,21 +106,21 @@ class _CartRowState extends State<_CartRow> {
                   child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 250),
                     transitionBuilder: (Widget child, Animation<double> animation) {
-                      if (child.key == ValueKey(dishQuantity)) {
+                      if (child.key == ValueKey(_dishQuantity)) {
                         return SlideTransition(
-                          position: dishQuantity > previousDishQuantity ? tweenBottom.animate(animation) : tweenTop.animate(animation),
+                          position: _dishQuantity > _previousDishQuantity ? _tweenBottom.animate(animation) : _tweenTop.animate(animation),
                           child: child,
                         );
                       } else {
                         return SlideTransition(
-                          position: dishQuantity > previousDishQuantity ? tweenTop.animate(animation) : tweenBottom.animate(animation),
+                          position: _dishQuantity > _previousDishQuantity ? _tweenTop.animate(animation) : _tweenBottom.animate(animation),
                           child: child,
                         );
                       }
                     },
                     child: Text(
-                      dishQuantity.toString(),
-                      key: ValueKey(dishQuantity),
+                      _dishQuantity.toString(),
+                      key: ValueKey(_dishQuantity),
                       style: TextStyle(fontFamily: GoogleFonts.roboto().fontFamily, color: whiteColor, fontSize: 20),
                     ),
                   ),

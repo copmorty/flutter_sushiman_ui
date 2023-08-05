@@ -26,22 +26,17 @@ class SPHD implements SliverPersistentHeaderDelegate {
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
     return maxHeight != oldDelegate.maxExtent || minHeight != oldDelegate.minExtent;
-    // || child != oldDelegate.child;
   }
 
   @override
-  // TODO: implement showOnScreenConfiguration
   PersistentHeaderShowOnScreenConfiguration? get showOnScreenConfiguration => null;
 
   @override
-  // TODO: implement snapConfiguration
   FloatingHeaderSnapConfiguration? get snapConfiguration => null;
 
   @override
-  // TODO: implement stretchConfiguration
   OverScrollHeaderStretchConfiguration? get stretchConfiguration => null;
 
   @override
-  // TODO: implement vsync
   TickerProvider? get vsync => null;
 }

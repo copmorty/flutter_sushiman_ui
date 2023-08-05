@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sushiman_ui/screens/home/_screen.dart';
 import 'package:flutter_sushiman_ui/screens/onboarding/_screen.dart';
-import 'package:flutter_sushiman_ui/shared/animations/route_transitions/custom_detail_route.dart';
-import 'package:flutter_sushiman_ui/shared/animations/route_transitions/scale_route.dart';
-import 'package:flutter_sushiman_ui/shared/animations/route_transitions/slide_left_route.dart';
+import 'package:flutter_sushiman_ui/shared/route_transitions/custom_detail_route.dart';
+import 'package:flutter_sushiman_ui/shared/route_transitions/scale_route.dart';
+import 'package:flutter_sushiman_ui/shared/route_transitions/slide_left_route.dart';
 import 'package:flutter_sushiman_ui/shared/themes/default_theme.dart';
 
 void main() {

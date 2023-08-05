@@ -18,9 +18,9 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _safeAreaBottomPadding = MediaQuery.of(context).padding.bottom;
-    final _footerCartHeight = 150 + _safeAreaBottomPadding;
-    final _bottomPadding = _footerCartHeight + screenBottomPadding;
+    final safeAreaBottomPadding = MediaQuery.of(context).padding.bottom;
+    final footerCartHeight = 150 + safeAreaBottomPadding;
+    final bottomPadding = footerCartHeight + screenBottomPadding;
 
     final map = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final Dish dish = map['dish'];
@@ -42,7 +42,7 @@ class DetailScreen extends StatelessWidget {
                   );
                 },
                 child: ListView(
-                  padding: EdgeInsets.only(bottom: _bottomPadding),
+                  padding: EdgeInsets.only(bottom: bottomPadding),
                   children: [
                     DetailHeader(dish: dish, sourceWidgetKey: sourceWidgetKey),
                     const SizedBox(height: 20),
@@ -66,7 +66,7 @@ class DetailScreen extends StatelessWidget {
                 },
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: DetailFooterCart(dish: dish, boxHeight: _footerCartHeight),
+                  child: DetailFooterCart(dish: dish, boxHeight: footerCartHeight),
                 ),
               ),
             ],
